@@ -1,0 +1,23 @@
+'''
+created by Divi 
+Date : 3,12,2024 
+description : turning a list of numbers into a number without converting the number into a string(characters)
+'''
+list_number = [8,5,7,1]
+amount_in_list =len(list_number) 
+
+# determining the amount of 0's the frist no should have or its place value 
+place_value = amount_in_list - 1
+
+# establisting a counter to keep adding values from the list to 
+final_number  = 0
+
+
+for number in list_number:
+        '''
+        iterating through the list, where by 'number' represents a number in the list, and each loop it changes to the next value 
+        '''
+        final_number = final_number + number*10**place_value 
+        place_value  = place_value - 1
+
+print(final_number)
