@@ -1,0 +1,55 @@
+'''
+created by Divi 
+Date : 4,12,2024 
+
+Create a game where the user must correctly guess a randomly generated integer between 1 and 100.
+
+The user should be notified whether their guess was “lower” or “higher” than the target number.
+
+Note that you will need to use the random library’s randint function.
+'''
+import random 
+
+def check_no (generated_no: int,guess_no:int)->str:
+    '''
+    inputs: generated number 
+    outputs: number entered by number 
+
+    definition: the functions check how close the users number is to the generated number 
+    '''
+    if generated_no > guess_no:
+        print('higher\n')
+    elif generated_no < guess_no :
+        print('lower\n')
+    else:
+        print('yay!! ')
+
+
+def check_input(guess_no:int)->str:
+    '''
+    input: the user no they guessed 
+    output :  try again prompt
+
+    description: if the user no is not inbwteen 1 to 100, or not an integer it will prompt user to
+    '''
+    while True:
+        try:
+            if 1 <= guess_no <= 100:# checking if the number is in the range
+                break
+            else:# prompting user for annother answer 
+                print('try again ')
+                guess_no = int(input('enter a guess: '))
+        except ValueError:# a Value Error will occur when the number is not an integer
+            print('try again your input is not an integer')
+
+
+generated_no = random.randrange(1,100,1)
+guess_no = int(input('enter a guess: '))
+check_input(guess_no)
+
+
+
+while guess_no != generated_no:
+    check_no(generated_no,guess_no)
+    guess_no = int(input('enter a guess: '))
+    check_input(guess_no)
